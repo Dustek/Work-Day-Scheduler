@@ -20,7 +20,7 @@
       href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
     <title>Work Day Scheduler</title>
   </head>
 
@@ -31,10 +31,54 @@
       <p id="currentDay" class="lead"></p>
     </header>
     <div class="container">
-      <!-- Timeblocks go here -->
+      <div class="row time-block" data-hour="9">
+        <div class="col-1 hour">9 AM</div>
+        <textarea class="col-9 textarea past" placeholder="Enter your event here"></textarea>
+        <button class="col-2 saveBtn">save</button>
+      </div>
+      <div class="row time-block" data-hour="10">
+        <div class="col-1 hour">10 AM</div>
+        <textarea class="col-9 textarea past" placeholder="Enter your event here"></textarea>
+        <button class="col-2 saveBtn">save</button>
+      </div>
+      <div class="row time-block" data-hour="11">
+        <div class="col-1 hour">11 AM</div>
+        <textarea class="col-9 textarea past" placeholder="Enter your event here"></textarea>
+        <button class="col-2 saveBtn">save</button>
+      </div>
+      <div class="row time-block" data-hour="12">
+        <div class="col-1 hour">12 PM</div>
+        <textarea class="col-9 textarea past" placeholder="Enter your event here"></textarea>
+        <button class="col-2 saveBtn">save</button>
+      </div>
+      <div class="row time-block" data-hour="13">
+        <div class="col-1 hour">1 PM</div>
+        <textarea class="col-9 textarea past" placeholder="Enter your event here"></textarea>
+        <button class="col-2 saveBtn">save</button>
+      </div>
+      <div class="row time-block" data-hour="14">
+        <div class="col-1 hour">2 PM</div>
+        <textarea class="col-9 textarea present" placeholder="Enter your event here"></textarea>
+        <button class="col-2 saveBtn">save</button>
+      </div>
+      <div class="row time-block" data-hour="15">
+        <div class="col-1 hour">3 PM</div>
+        <textarea class="col-9 textarea future" placeholder="Enter your event here"></textarea>
+        <button class="col-2 saveBtn">save</button>
+      </div>
+      <div class="row time-block" data-hour="16">
+        <div class="col-1 hour">4 PM</div>
+        <textarea class="col-9 textarea future" placeholder="Enter your event here"></textarea>
+        <button class="col-2 saveBtn">save</button>
+      </div>
+      <div class="row time-block" data-hour="17">
+        <div class="col-1 hour">5 PM</div>
+        <textarea class="col-9 textarea future" placeholder="Enter your event here"></textarea>
+        <button class="col-2 saveBtn">save</button>
+      </div>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <scri src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></scri>
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
   </body>
 </html>
