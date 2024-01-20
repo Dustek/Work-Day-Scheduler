@@ -8,14 +8,12 @@ var currentDate = now.format("dddd MMMM [the] Do")
 $("#currentDay").text(currentDate)
 
 
-// gets current time
+// Gets current time
 var currentTime = dayjs().format('HH');
 
-
+// Updates block color based on current time
 $(".time-block").each(function() {
-
  var blockHour =  $(this).data("hour");
-
 
 if (blockHour > currentTime) {
     $(this).find("textarea").removeClass("past present").addClass("future");
@@ -27,4 +25,17 @@ else if (blockHour < currentTime) {
     $(this).find("textarea").removeClass("present future").addClass("past");
 }
 })
+
+
+// saves input when user types into time block
+$(".time-block").each(function() {
+  $(this).find(".saveBtn").on("click", function() {
+    var input = $(this).siblings("textarea").val();
+    console.log(input);
+  });
+});
+
+
+
+
 
