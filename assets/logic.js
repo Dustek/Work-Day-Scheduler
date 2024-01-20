@@ -29,11 +29,23 @@ else if (blockHour < currentTime) {
 
 // saves input when user types into time block
 $(".time-block").each(function() {
+    var blockHour =  $(this).data("hour");
   $(this).find(".saveBtn").on("click", function() {
     var input = $(this).siblings("textarea").val();
-    console.log(input);
+    // converts to string and saves into localstorage
+    var localStorageObject = {
+        time: blockHour,
+        text: input,
+    }
+    localStorage.setItem("data", JSON.stringify(localStorageObject))
   });
 });
+
+
+
+
+
+
 
 
 
