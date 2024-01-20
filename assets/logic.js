@@ -24,7 +24,7 @@ else if (blockHour == currentTime) {
 else if (blockHour < currentTime) {
     $(this).find("textarea").removeClass("present future").addClass("past");
 }
-})
+}) 
 
 
 // saves input when user types into time block
@@ -37,10 +37,18 @@ $(".time-block").each(function() {
         time: blockHour,
         text: input,
     }
-    localStorage.setItem("data", JSON.stringify(localStorageObject))
+
+    localStorageArray=[];
+    localStorageArray.push(localStorageObject);
+
+    localStorage.setItem("data", JSON.stringify(localStorageArray))
   });
 });
 
+
+var savedLocalStorageString = localStorage.getItem("data")
+var retrievedArrayOfObjects = JSON.parse(savedLocalStorageString)
+console.log(retrievedArrayOfObjects)
 
 
 
