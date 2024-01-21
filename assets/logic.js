@@ -1,3 +1,12 @@
+
+// Checks if local storage exists or creates empty array for it
+var events
+if (localStorage.getItem("events")) {
+    events.JSON.parse(localStorage.getItem("events"))
+    }
+    else {events = [];}
+
+
 // Loads dayjs advanced plugin for proper "Do" date display
 dayjs.extend(window.dayjs_plugin_advancedFormat);
 
@@ -29,26 +38,22 @@ else if (blockHour < currentTime) {
 
 // saves input when user types into time block
 $(".time-block").each(function() {
-    var blockHour =  $(this).data("hour");
   $(this).find(".saveBtn").on("click", function() {
     var input = $(this).siblings("textarea").val();
-    // converts to string and saves into localstorage
-    var localStorageObject = {
-        time: blockHour,
-        text: input,
-    }
+    var blockHour = $(this).parent().data("hour");
+    events.push({ hour: blockHour, eventText: input });
 
-    localStorageArray=[];
-    localStorageArray.push(localStorageObject);
+    // localStorageArray=[];
+    // localStorageArray.push(localStorageObject);
 
-    localStorage.setItem("data", JSON.stringify(localStorageArray))
+    // localStorage.setItem("data", JSON.stringify(localStorageArray))
   });
 });
 
 
-var savedLocalStorageString = localStorage.getItem("data")
-var retrievedArrayOfObjects = JSON.parse(savedLocalStorageString)
-console.log(retrievedArrayOfObjects)
+// var savedLocalStorageString = localStorage.getItem("data")
+// var retrievedArrayOfObjects = JSON.parse(savedLocalStorageString)
+// console.log(retrievedArrayOfObjects)
 
 
 
