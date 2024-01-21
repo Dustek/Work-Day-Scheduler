@@ -41,12 +41,26 @@ $(".time-block").each(function() {
   $(this).find(".saveBtn").on("click", function() {
     var input = $(this).siblings("textarea").val();
     var blockHour = $(this).parent().data("hour");
-    events.push({ hour: blockHour, eventText: input });
 
-    // localStorageArray=[];
-    // localStorageArray.push(localStorageObject);
+    // Finds the index of existing hour object or -1 if none found
+    var existingEventIndex = events.findIndex(function(event) {
+        return event.hour === blockHour;
+      });
+    // If no existing hour object is found, add it
+      if (existingEventIndex === -1) {
+        events.push({ hour: blockHour, eventText: input });
+      }
+    // Else, if existing hour object is found, update it's text content
+      else {
+        events[existingEventIndex].eventText = input
+      }
 
-    // localStorage.setItem("data", JSON.stringify(localStorageArray))
+
+
+
+
+
+    // localStorage.setItem("data", JSON.stringify(events))
   });
 });
 
