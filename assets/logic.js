@@ -1,12 +1,3 @@
-
-// Checks if local storage exists or creates empty array for it
-var events
-if (localStorage.getItem("events")) {
-    events.JSON.parse(localStorage.getItem("events"))
-    }
-    else {events = [];}
-
-
 // Loads dayjs advanced plugin for proper "Do" date display
 dayjs.extend(window.dayjs_plugin_advancedFormat);
 
@@ -36,6 +27,28 @@ else if (blockHour < currentTime) {
 }) 
 
 
+// Checks if local storage exists or creates empty array for it
+var events
+if (localStorage.getItem("data")) {
+    events = JSON.parse(localStorage.getItem("data"))
+    }
+    else {events = [];}
+
+// Fills out text blocks from local storage
+$(".time-block").each(function() {
+var blockHour =  $(this).data("hour");
+// Finds an object where hour matches time-block hour, if it exists
+var correspondingEvent = events.find(function(event) {
+    return event.hour === blockHour;
+  });
+// If object is found, sets text area to be the text from object
+if (correspondingEvent)
+$(this).find("textarea").val(correspondingEvent.eventText)
+})
+
+
+
+
 // saves input when user types into time block
 $(".time-block").each(function() {
   $(this).find(".saveBtn").on("click", function() {
@@ -53,21 +66,11 @@ $(".time-block").each(function() {
     // Else, if existing hour object is found, update it's text content
       else {
         events[existingEventIndex].eventText = input
-      }
-
-
-
-
-
-
-    // localStorage.setItem("data", JSON.stringify(events))
+      };
+    // Store input into local storage
+     localStorage.setItem("data", JSON.stringify(events));
   });
 });
-
-
-// var savedLocalStorageString = localStorage.getItem("data")
-// var retrievedArrayOfObjects = JSON.parse(savedLocalStorageString)
-// console.log(retrievedArrayOfObjects)
 
 
 
